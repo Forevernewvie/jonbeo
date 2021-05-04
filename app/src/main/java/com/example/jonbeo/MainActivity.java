@@ -27,11 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static Context mContext;
     private ImageButton btn;
     Button swing,Long;
-     alarmReceiver alarmBroadcastReceiver;
-     DevicePolicyManager devicePolicyManager;
+   public  DevicePolicyManager devicePolicyManager;
      ComponentName componentName;
      Intent serviceIntent;
-     resultReceiver receiver;
      alarmSetManager getAlarmSetManager;
     CheckPermission checkPermission;
     private static boolean onOff = true;
@@ -42,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getAlarmSetManager = new alarmSetManager(this);
-        receiver = new resultReceiver();
-        alarmBroadcastReceiver = new alarmReceiver();
         checkPermission = new CheckPermission(this);
         devicePolicyManager = (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
         componentName= new ComponentName(MainActivity.this, Controller.class);
