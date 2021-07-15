@@ -4,7 +4,7 @@
   
   버튼 터치시-> 감시 시작(재설치,삭제,실행,부팅)<br>
   
-  [시연 동영상]https://youtu.be/rpDt8Ty8PCQ 
+  [시연 동영상]<
   [![Video Label](https://user-images.githubusercontent.com/53516129/125823496-7240e258-cd76-4e9d-96d5-4d602d6e0aa1.jpg)](https://www.youtube.com/watch?v=rpDt8Ty8PCQ)
   <br>
   - 부팅 시 처음부터 다시 시작 <br>
