@@ -5,7 +5,7 @@
   버튼 터치시-> 감시 시작(재설치,삭제,실행,부팅)<br>
   
   [시연 동영상]https://youtu.be/rpDt8Ty8PCQ 
-  
+  [![Video Label]](https://www.youtube.com/watch?v=rpDt8Ty8PCQ)
   <br>
   - 부팅 시 처음부터 다시 시작 <br>
   - 재설치&삭제&실행은 쓰레드가 상시 감시
