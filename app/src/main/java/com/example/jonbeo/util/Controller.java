@@ -1,4 +1,4 @@
-package com.example.jonbeo;
+package com.example.jonbeo.util;
 
 import android.app.admin.DeviceAdminReceiver;
 import android.app.admin.DevicePolicyManager;

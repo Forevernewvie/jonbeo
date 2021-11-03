@@ -24,28 +24,28 @@
             android:resource="@xml/device_admin" />
 
         <service
-            android:name=".Mydetect"
+            android:name=".service.Mydetect"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".PopupActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.PopupActivity" />
 
-        <receiver android:name=".BootReceiver">
+        <receiver android:name=".receiver.BootReceiver">
             <intent-filter android:priority="980">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".Controller"
+            android:name=".util.Controller"
             android:description="@string/app_description"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
@@ -60,7 +60,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".alarmReceiver"
+            android:name=".receiver.AlarmReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -69,7 +69,7 @@
         </receiver>
 
         <receiver
-            android:name=".resultReceiver"
+            android:name=".receiver.ResultReceiver"
             android:enabled="true">
            
         </receiver>

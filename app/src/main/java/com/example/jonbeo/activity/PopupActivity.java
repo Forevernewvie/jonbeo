@@ -1,4 +1,4 @@
-package com.example.jonbeo;
+package com.example.jonbeo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.jonbeo.R;
 
 public class PopupActivity extends AppCompatActivity {
     Button closeBtn;
@@ -30,17 +32,14 @@ public class PopupActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //바깥레이어 클릭시 안닫히게
         if(event.getAction()==MotionEvent.ACTION_OUTSIDE){
             return false;
-
         }
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        //안드로이드 백버튼 막기
         return;
     }
 

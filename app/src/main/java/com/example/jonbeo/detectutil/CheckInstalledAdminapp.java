@@ -1,4 +1,4 @@
-package com.example.jonbeo;
+package com.example.jonbeo.detectutil;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -6,11 +6,11 @@ import android.content.pm.PackageManager;
 
 import java.util.List;
 
-public class checkInstalledAdminapp {
+public class CheckInstalledAdminapp {
 
 
     private Context mContext;
-    public checkInstalledAdminapp (Context context) {
+    public CheckInstalledAdminapp(Context context) {
         this.mContext = context;
     }
 
@@ -18,7 +18,7 @@ public class checkInstalledAdminapp {
 
 
         final PackageManager pm =   mContext.getPackageManager();
-        //get a list of installed apps.
+
         List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
 
         for (ApplicationInfo packageInfo : packages) {

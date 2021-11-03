@@ -1,4 +1,4 @@
-package com.example.jonbeo;
+package com.example.jonbeo.alarm;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -6,30 +6,35 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
-import android.util.Log;
+
+import com.example.jonbeo.receiver.AlarmReceiver;
+import com.example.jonbeo.util.PreferenceManager;
+import com.example.jonbeo.R;
+import com.example.jonbeo.receiver.ResultReceiver;
+import com.example.jonbeo.service.Mydetect;
 
 import java.util.Calendar;
 
-public class alarmSetManager {
+public class AlarmSetManager {
 
     private Context mContext;
     private AlarmManager alarmManager;
-    private alarmReceiver alarmBroadcastReceiver;
+    private AlarmReceiver alarmBroadcastReceiver;
     private Intent serviceIntent;
-    private resultReceiver receiver;
+    private ResultReceiver receiver;
 
-    public alarmSetManager(Context context){
+    public AlarmSetManager(Context context){
         mContext=context;
-        serviceIntent = new Intent(mContext,Mydetect.class);
-        alarmBroadcastReceiver = new alarmReceiver();
-        receiver = new resultReceiver();
+        serviceIntent = new Intent(mContext, Mydetect.class);
+        alarmBroadcastReceiver = new AlarmReceiver();
+        receiver = new ResultReceiver();
     }
 
     public void setAlarm(int id) {
 
         //AlarmReceiver에 값 전달
         alarmManager  = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
-        Intent receiverIntent = new Intent(mContext, alarmReceiver.class);
+        Intent receiverIntent = new Intent(mContext, AlarmReceiver.class);
         receiverIntent.setAction("wakeup");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext, 0, receiverIntent, 0);
         Calendar cal = Calendar.getInstance();
@@ -44,7 +49,6 @@ public class alarmSetManager {
         }
 
         alarmManager.setExactAndAllowWhileIdle(android.app.AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),pendingIntent);
-        Log.d("alarm", "SetAlarmStartService: registed?");
     }
 
     public void SetAlarmStartService(int id){

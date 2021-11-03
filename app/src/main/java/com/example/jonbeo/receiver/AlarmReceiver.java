@@ -1,4 +1,4 @@
-package com.example.jonbeo;
+package com.example.jonbeo.receiver;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -10,9 +10,11 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
-public class alarmReceiver extends BroadcastReceiver {
+import com.example.jonbeo.R;
 
-    public alarmReceiver() {}
+public class AlarmReceiver extends BroadcastReceiver {
+
+    public AlarmReceiver() {}
     Notification notification;
     NotificationManager manager;
     NotificationChannel notificationChannel;
@@ -28,7 +30,7 @@ public class alarmReceiver extends BroadcastReceiver {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationChannel = new NotificationChannel(ch_id, ch_name, NotificationManager.IMPORTANCE_HIGH);
             manager.createNotificationChannel(notificationChannel);
-            Intent mainIntent = new Intent(context, resultReceiver.class);
+            Intent mainIntent = new Intent(context, ResultReceiver.class);
             mainIntent.setAction("result");
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 101, mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

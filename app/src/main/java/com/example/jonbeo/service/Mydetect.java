@@ -1,9 +1,8 @@
-package com.example.jonbeo;
+package com.example.jonbeo.service;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -11,10 +10,14 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
+import com.example.jonbeo.detectutil.CheckInstalledAdminapp;
+import com.example.jonbeo.util.CheckPermission;
+import com.example.jonbeo.detectutil.DetectDeleteAdminApp;
+import com.example.jonbeo.detectutil.DetectForeGroundTargetApp;
+import com.example.jonbeo.detectutil.DetectaBackgroundadminApp;
+import com.example.jonbeo.R;
 
 import java.util.ArrayList;
 
@@ -24,7 +27,7 @@ public class Mydetect extends Service {
     public Mydetect() {
     }
 
-    checkInstalledAdminapp CIA;
+    CheckInstalledAdminapp CIA;
     CheckPermission checkPermission;
     DetectaBackgroundadminApp detectaBackgroundadminApp;
     DetectForeGroundTargetApp detectForeGroundTargetApp;
@@ -44,7 +47,6 @@ public class Mydetect extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -53,7 +55,7 @@ public class Mydetect extends Service {
         manager = (NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
         detectaBackgroundadminApp = new DetectaBackgroundadminApp(this);
         checkPermission = new CheckPermission(this);
-        CIA = new checkInstalledAdminapp(this);
+        CIA = new CheckInstalledAdminapp(this);
         detectForeGroundTargetApp = new DetectForeGroundTargetApp();
         deelteAdminapp = new DetectDeleteAdminApp();
         //쓰레드
@@ -65,7 +67,6 @@ public class Mydetect extends Service {
 
     @Override
     public void onDestroy() {
-        Log.d(TAG, "onDestroy: ");
         super.onDestroy();
         _run = false;
     }
@@ -73,7 +74,6 @@ public class Mydetect extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.d(TAG, "onStartCommand: ");
 
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
                 startForegroundService();
@@ -171,12 +171,9 @@ public class Mydetect extends Service {
                 ){
 
                     gotoHome();
-                    Log.d(TAG, "run: plz gotohome");
                     handler.post(new Runnable() {
                         @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(),"버텨야 합니다",Toast.LENGTH_SHORT).show();
-
+                        public void run() { Toast.makeText(getApplicationContext(),"버텨야 합니다",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

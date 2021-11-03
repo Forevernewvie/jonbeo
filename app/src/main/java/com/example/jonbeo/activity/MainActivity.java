@@ -1,37 +1,34 @@
-package com.example.jonbeo;
+package com.example.jonbeo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
+
 import android.app.admin.DevicePolicyManager;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Calendar;
+import com.example.jonbeo.R;
+import com.example.jonbeo.alarm.AlarmSetManager;
+import com.example.jonbeo.service.Mydetect;
+import com.example.jonbeo.util.CheckPermission;
+import com.example.jonbeo.util.Controller;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static Context mContext;
     private ImageButton btn;
-    Button swing,Long;
-   public  DevicePolicyManager devicePolicyManager;
-     ComponentName componentName;
-     Intent serviceIntent;
-     alarmSetManager getAlarmSetManager;
-    CheckPermission checkPermission;
+    private Button swing,Long;
+    public  DevicePolicyManager devicePolicyManager;
+    public ComponentName componentName;
+    private Intent serviceIntent;
+    private AlarmSetManager getAlarmSetManager;
+    private CheckPermission checkPermission;
     private static boolean onOff = true;
 
     @Override
@@ -39,13 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mContext=this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getAlarmSetManager = new alarmSetManager(this);
+        getAlarmSetManager = new AlarmSetManager(getApplicationContext());
         checkPermission = new CheckPermission(this);
         devicePolicyManager = (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
         componentName= new ComponentName(MainActivity.this, Controller.class);
-
-
-        serviceIntent = new Intent(MainActivity.this,Mydetect.class);
+        serviceIntent = new Intent(MainActivity.this, Mydetect.class);
         //---버튼부-----
         btn =  findViewById(R.id.popupBtn);
         Long = findViewById(R.id.Long);
@@ -107,10 +102,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (!Settings.canDrawOverlays(this)) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
                 startActivity(intent);
-                return false; // above will start new Activity with proper app setting
+                return false;
             }
         }
-        return true; // on lower OS versions granted during apk installation
+        return true;
     }
 
     public void disableButton(){

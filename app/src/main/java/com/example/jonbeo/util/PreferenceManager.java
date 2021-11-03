@@ -1,16 +1,9 @@
-package com.example.jonbeo;
+package com.example.jonbeo.util;
 
 import android.content.Context;
 
 import android.content.SharedPreferences;
 
-
-
-/**
-
- * 데이터 저장 및 로드 클래스
-
- */
 
 public class PreferenceManager {
 

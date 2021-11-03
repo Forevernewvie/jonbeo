@@ -1,11 +1,12 @@
-package com.example.jonbeo;
+package com.example.jonbeo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
+
+import com.example.jonbeo.R;
 
 public class SplashActivity  extends AppCompatActivity {
 

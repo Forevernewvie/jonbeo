@@ -1,4 +1,4 @@
-package com.example.jonbeo;
+package com.example.jonbeo.detectutil;
 
 import android.app.usage.UsageEvents;
 import android.app.usage.UsageStatsManager;
